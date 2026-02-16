@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+/* =========================
+   THEME VARIABLES
+   ========================= */
+
+/* Global overrides for all slide toggles */
+:root {
+  --bg: #f8fafc;
+  --bg-elevated: rgba(0, 0, 0, 0.05);
+  --text-primary: #0f172a;
+  --text-muted: #475569;
+
+  --gradient-primary: linear-gradient(
+    90deg,
+    #7c3aed,
+    #9333ea,
+    #a855f7
+  );
+
+  --glow-cyan: #06b6d4;
+  --glow-purple: #6366f1;
+  --glow-blue: #3b82f6;
+  --glow-green: #22c55e;
+  --glow-pink: #ec4899;
+  --glow-amber: #f59e0b;
+  --glow-red: #ff2a2a;
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg: #0b0f1a;
+  --bg-elevated: rgba(255, 255, 255, 0.06);
+  --text-primary: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --gradient-primary: linear-gradient(
+    270deg,
+    #7c3aed,
+    #9333ea,
+    #a855f7
+  );
+
+  --glow-cyan: #00e5ff;
+  --glow-purple: #a855f7;
+  --glow-blue: #60a5fa;
+  --glow-green: #4ade80;
+  --glow-pink: #f472b6;
+  --glow-amber: #fbbf24;
+  --glow-red: #ff2a2a;
+}
+
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Ubuntu, sans-serif;
+
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+

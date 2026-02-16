@@ -1,0 +1,109 @@
+<section class="dashboard-page">
+  <h1 class="title">Dashboard</h1>
+  <p class="subtitle">
+    Overview of your documents and insights
+  </p>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Files</div>
+      <div class="stat-value">12</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Processed</div>
+      <div class="stat-value">9</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">In Progress</div>
+      <div class="stat-value">3</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Insights Generated</div>
+      <div class="stat-value">24</div>
+    </div>
+  </div>
+
+  <!-- Sections -->
+  <div class="dashboard-sections">
+    <!-- Recent uploads -->
+    <div class="panel">
+      <h2>Recent Uploads</h2>
+      <p class="panel-hint">
+        Latest documents added to the system
+      </p>
+    </div>
+
+    <!-- Analytics -->
+    <div class="panel">
+      <h2>Analytics</h2>
+      <p class="panel-hint">
+        Document processing overview
+      </p>
+
+      <div class="charts">
+        <!-- Bar chart -->
+        <div class="chart-card">
+          <div class="chart-title">Uploads (Last 7 Days)</div>
+
+          <div class="bar-chart">
+            <div class="bar" style="--value: 40%"></div>
+            <div class="bar" style="--value: 65%"></div>
+            <div class="bar" style="--value: 30%"></div>
+            <div class="bar" style="--value: 80%"></div>
+            <div class="bar" style="--value: 55%"></div>
+            <div class="bar" style="--value: 70%"></div>
+            <div class="bar" style="--value: 90%"></div>
+          </div>
+        </div>
+
+        <!-- Donut chart -->
+        <div class="chart-card">
+          <div class="chart-title">File Status</div>
+
+          <div class="donut">
+            <svg viewBox="0 0 36 36">
+              <circle
+                cx="18"
+                cy="18"
+                r="15.9"
+                fill="transparent"
+                stroke="rgba(255,255,255,0.1)"
+                stroke-width="4"
+              />
+
+              <circle
+                cx="18"
+                cy="18"
+                r="15.9"
+                fill="transparent"
+                stroke="var(--glow-purple)"
+                stroke-width="4"
+                stroke-dasharray="70 30"
+              />
+
+              <circle
+                cx="18"
+                cy="18"
+                r="15.9"
+                fill="transparent"
+                stroke="var(--glow-cyan)"
+                stroke-width="4"
+                stroke-dasharray="20 80"
+                stroke-dashoffset="-70"
+              />
+            </svg>
+
+            <div class="donut-center">
+              <span class="donut-value">70%</span>
+              <span class="donut-label">Completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

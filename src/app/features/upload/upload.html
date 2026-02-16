@@ -1,0 +1,109 @@
+<section class="upload-page">
+  <h1 class="title">Upload Documents</h1>
+  <p class="subtitle">
+    Securely upload your files to extract insights.
+  </p>
+
+  <div
+    class="upload-card"
+    [class.drag-over]="isDragOver"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <div class="upload-content">
+      <div class="icon">
+        <svg
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="upload-icon"
+        >
+          <path
+            d="M16 16l-4-4-4 4M12 12v9"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <p class="text">
+        Drag & drop your documents here
+      </p>
+
+      <p class="hint">
+        PDF, DOCX, CSV supported
+      </p>
+
+      <!-- Hidden file input -->
+      <input
+        type="file"
+        multiple
+        hidden
+        #fileInput
+        (change)="onFileSelect($event)"
+      />
+
+      <!-- Simple browse button -->
+      <button class="browse-btn" (click)="fileInput.click()">
+        Browse Files
+      </button>
+    </div>
+  </div>
+  
+@if (files.length) {
+  <section class="files-section">
+    <h2 class="files-title">Uploaded Files</h2>
+
+    <div class="files-grid">
+      @for (item of files; track item.file.name) {
+        <div
+          class="file-card"
+          [class.done]="item.status() === 'done'"
+        >
+          <!-- Facade for completed files -->
+          @if (item.status() === 'done') {
+            <div class="facade"></div>
+          }
+
+          <div class="file-card-content">
+            <div class="file-icon">📄</div>
+
+            <div class="file-name">
+              {{ item.file.name }}
+            </div>
+
+            @if (item.status() !== 'done') {
+              <div class="progress-bar">
+                <div
+                  class="progress"
+                  [style.width.%]="item.progress()"
+                ></div>
+              </div>
+            }
+
+            <div class="file-status">
+              {{ item.status() }}
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+}
+
+
+
+
+</section>
