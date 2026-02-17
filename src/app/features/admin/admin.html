@@ -1,0 +1,76 @@
+<section class="admin-page">
+
+  <div class="admin-toolbar">
+  <button class="refresh-btn" (click)="refresh()">
+    Refresh
+  </button>
+</div>
+
+
+  <h2>Pending Approvals</h2>
+
+  <div class="table">
+    <div class="row header">
+      <div>Email</div>
+      <div>Role</div>
+      <div>Status</div>
+      <div class="actions-col">Actions</div>
+    </div>
+
+    @for (user of pendingUsers(); track user.Id) {
+      <div class="row">
+        <div>{{ user.Email }}</div>
+        <div class="role">{{ roleLabel(user.Role) }}</div>
+        <div class="status">{{ statusLabel(user.Status) }}</div>
+
+        <div class="actions">
+          <button (click)="approve(user.Id)">Approve</button>
+          <button class="danger" (click)="reject(user.Id)">Reject</button>
+        </div>
+      </div>
+    } @empty {
+      <p class="empty">No pending users</p>
+    }
+  </div>
+
+
+  <h2>All Users</h2>
+
+  <div class="table">
+    <div class="row header">
+      <div>Email</div>
+      <div>Role</div>
+      <div>Status</div>
+      <div class="actions-col">Actions</div>
+    </div>
+
+    @for (user of users(); track user.Id) {
+      <div class="row">
+        <div>{{ user.Email }}</div>
+
+        <div class="role">
+          {{ roleLabel(user.Role) }}
+        </div>
+
+        <div class="status">
+          {{ statusLabel(user.Status) }}
+        </div>
+
+        <div class="actions">
+
+          @if (!isCurrentUser(user.Id) && user.Role !== 0) {
+            <button (click)="promote(user.Id)">Promote</button>
+          }
+
+          @if (!isCurrentUser(user.Id)) {
+            <button class="danger" (click)="delete(user.Id)">Delete</button>
+          }
+
+        </div>
+      </div>
+    } @empty {
+      <p class="empty">No users found</p>
+    }
+  </div>
+
+</section>

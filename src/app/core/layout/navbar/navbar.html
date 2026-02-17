@@ -3,14 +3,20 @@
   <div class="left">
     <span class="logo" routerLink="/">Aveva</span>
 
-    <!-- Logged IN -->
-    @if (auth.isLoggedIn()) {
+    @if (auth.isLoggedIn() && auth.isUser()) {
       <a routerLink="/upload">Upload</a>
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/admin">Admin</a>
     }
 
-    <!-- Logged OUT -->
+    
+    @if (auth.isLoggedIn() && auth.isAdmin()) {
+      <a routerLink="/admin">Admin</a>
+    }
+    
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/dashboard">Dashboard</a>
+    }
+
+
     @if (!auth.isLoggedIn()) {
       <a routerLink="/login">Login</a>
       <a routerLink="/signup">Signup</a>
@@ -18,14 +24,12 @@
   </div>
 
   <div class="right">
-    <mat-slide-toggle
-      (click)="toggleTheme()"
-      class="my-toggle">
-    </mat-slide-toggle>
+    <mat-slide-toggle (click)="toggleTheme()" class="my-toggle"></mat-slide-toggle>
 
     @if (auth.isLoggedIn()) {
       <button (click)="logout()">Logout</button>
     }
   </div>
+
 
 </nav>

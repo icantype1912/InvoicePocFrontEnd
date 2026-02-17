@@ -1,0 +1,173 @@
+.admin-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Section Titles */
+.admin-page h2 {
+  margin: 30px 0 14px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  opacity: 0.9;
+}
+
+/* Card container */
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 18px;
+  margin-bottom: 12px;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02)
+  );
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  transition: all 0.25s ease;
+}
+
+/* Hover animation */
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(140,120,255,0.4);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* User text */
+.card span {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* Action buttons container */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Base button style */
+.actions button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  background: rgba(140,120,255,0.15);
+  color: #b8a9ff;
+
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.actions button:hover {
+  background: rgba(140,120,255,0.25);
+  transform: translateY(-1px);
+}
+
+/* Danger button */
+.actions button.danger {
+  background: rgba(255,80,80,0.15);
+  color: #ff7a7a;
+}
+
+.actions button.danger:hover {
+  background: rgba(255,80,80,0.3);
+}
+
+/* Empty state */
+.empty {
+  opacity: 0.5;
+  font-size: 14px;
+  margin: 10px 0 20px;
+  padding-left: 6px;
+}
+
+
+.table {
+  margin-top: 10px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  align-items: center;
+
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+
+  background: rgba(255,255,255,0.02);
+  transition: all 0.2s ease;
+}
+
+.row:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.row.header {
+  font-size: 13px;
+  opacity: 0.6;
+  font-weight: 600;
+  background: transparent;
+}
+
+.role {
+  font-weight: 500;
+  color: #b8a9ff;
+}
+
+.status {
+  font-weight: 500;
+  color: #7fd1ff;
+}
+
+.actions-col {
+  text-align: right;
+}
+
+.admin-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.refresh-btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  background: linear-gradient(
+    135deg,
+    rgba(140,120,255,0.25),
+    rgba(140,120,255,0.15)
+  );
+
+  color: #c9c2ff;
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(140,120,255,0.35);
+}
