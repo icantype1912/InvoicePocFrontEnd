@@ -47,6 +47,11 @@ export const routes: Routes = [
       .then(m => m.Admin)
   },
   {
+    path: 'jobs',
+    loadComponent: () =>
+      import('./features/job-queue/job-queue').then(m => m.JobQueue)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

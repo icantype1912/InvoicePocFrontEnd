@@ -32,7 +32,7 @@ export class Login {
   }).subscribe({
     next: (res) => {
       console.log('Login success', res);
-      this.auth.setToken(res.AccessToken);
+      this.auth.setToken(res.accessToken);
       this.router.navigate(['/dashboard']);
     },
     error: (err) => {

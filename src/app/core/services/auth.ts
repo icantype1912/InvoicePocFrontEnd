@@ -12,6 +12,7 @@ interface LoginRequest {
 interface SignupRequest {
   email: string;
   password: string;
+  companyName: string;
 }
 
 @Injectable({
@@ -35,8 +36,6 @@ export class Auth {
     return this.http.post(`${this.api}/signup`, data);
   }
 
-  // ---------------- Token Storage ----------------
-
   getToken(): string | null {
     if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem('token');
@@ -47,7 +46,7 @@ export class Auth {
   setToken(token: string) {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('token', token);
-      this.decoded = null; // reset cache
+      this.decoded = null; 
     }
   }
 
@@ -62,7 +61,6 @@ export class Auth {
     return !!this.getToken();
   }
 
-  // ---------------- JWT Decode (CACHED) ----------------
 
   private getDecoded(): any | null {
     if (this.decoded) return this.decoded;
@@ -78,7 +76,6 @@ export class Auth {
     }
   }
 
-  // ---------------- Role Helpers ----------------
 
   getRole(): string | null {
     const decoded = this.getDecoded();
@@ -97,7 +94,6 @@ export class Auth {
     return this.getRole() === 'Vendor';
   }
 
-  // ---------------- User Id ----------------
 
   getUserId(): string | null {
     const decoded = this.getDecoded();

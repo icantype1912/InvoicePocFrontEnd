@@ -3,22 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Auth } from '../../core/services/auth';
 
 type User = {
-  Id: string;
-  Email: string;
-  Role: number;
-  Status: number;
+  id: string;
+  email: string;
+  role: number;
+  status: number;
 };
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [],
   templateUrl: './admin.html',
   styleUrl: './admin.css',
 })
 export class Admin {
 
   constructor(private http: HttpClient, public auth: Auth) {}
+
+  private api = 'https://localhost:55842/api/admin';
 
   pendingUsers = signal<User[]>([]);
   users = signal<User[]>([]);
@@ -33,40 +34,42 @@ export class Admin {
   }
 
   isCurrentUser(id: string) {
-  return this.auth.getUserId() === id;
-}
+    return this.auth.getUserId() === id;
+  }
 
+  // ---------------- API ----------------
 
   loadPending() {
-    this.http.get<User[]>('https://localhost:55842/api/admin/users/pending')
+    this.http.get<User[]>(`${this.api}/users/pending`)
       .subscribe(res => this.pendingUsers.set(res));
   }
 
   loadUsers() {
-    this.http.get<User[]>('https://localhost:55842/api/admin/users')
+    this.http.get<User[]>(`${this.api}/users`)
       .subscribe(res => this.users.set(res));
   }
 
   approve(id: string) {
-    this.http.post(`https://localhost:55842/api/admin/users/${id}/approve`, {})
+    this.http.post(`${this.api}/users/${id}/approve`, {})
       .subscribe(() => this.refresh());
   }
 
   reject(id: string) {
-    this.http.post(`https://localhost:55842/api/admin/users/${id}/reject`, {})
+    this.http.post(`${this.api}/users/${id}/reject`, { reason: 'Rejected by admin' })
       .subscribe(() => this.refresh());
   }
 
   promote(id: string) {
-    this.http.post(`https://localhost:55842/api/admin/users/${id}/promote`, {})
+    this.http.post(`${this.api}/users/${id}/promote`, {})
       .subscribe(() => this.refresh());
   }
 
   delete(id: string) {
-    this.http.delete(`https://localhost:55842/api/admin/users/${id}`)
+    this.http.delete(`${this.api}/users/${id}`)
       .subscribe(() => this.refresh());
   }
 
+  // ---------------- LABEL HELPERS ----------------
 
   roleLabel(role: number) {
     if (role === 0) return 'Admin';

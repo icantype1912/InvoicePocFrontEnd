@@ -76,7 +76,7 @@ export class Upload {
     formData.append('file', item.file);
 
     this.http.post(
-      'https://localhost:55842/api/vendor/invoices/upload',
+      'https://localhost:55842/api/VendorInvoices/upload',
       formData,
       {
         reportProgress: true,

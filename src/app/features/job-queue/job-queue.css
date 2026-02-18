@@ -1,0 +1,232 @@
+.jobs-page {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters button {
+  margin-left: 8px;
+}
+
+.table {
+  margin-top: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.row.header {
+  opacity: 0.6;
+  font-weight: 600;
+}
+
+.row:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.status {
+  color: #7fd1ff;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.job-details {
+  margin-top: 30px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+}
+
+.empty {
+  opacity: 0.5;
+}
+
+.jobs-page {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ---------------- HEADER ---------------- */
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar h2 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------------- TABLE ---------------- */
+
+.table {
+  margin-top: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.2s ease;
+}
+
+.row:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.row.header {
+  opacity: 0.6;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+/* ---------------- STATUS BADGES ---------------- */
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.pending {
+  background: rgba(255,200,100,0.15);
+  color: #ffc46b;
+}
+
+.status-badge.processing {
+  background: rgba(120,200,255,0.15);
+  color: #7fd1ff;
+}
+
+.status-badge.failed {
+  background: rgba(255,80,80,0.18);
+  color: #ff8080;
+}
+
+/* ---------------- BUTTON SYSTEM ---------------- */
+
+button {
+  border: none;
+  cursor: pointer;
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+button.primary {
+  background: linear-gradient(
+    135deg,
+    rgba(140,120,255,0.25),
+    rgba(140,120,255,0.15)
+  );
+  color: #c9c2ff;
+}
+
+button.primary:hover {
+  transform: translateY(-1px);
+  background: rgba(140,120,255,0.35);
+}
+
+button.secondary {
+  background: rgba(255,255,255,0.06);
+  color: #e6e6e6;
+}
+
+button.secondary:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ---------------- PAGINATION ---------------- */
+
+.pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ---------------- DETAILS PANEL ---------------- */
+
+.job-details {
+  margin-top: 30px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.job-details pre {
+  white-space: pre-wrap;
+  font-size: 13px;
+}
+
+/* ---------------- EMPTY STATE ---------------- */
+
+.empty {
+  opacity: 0.5;
+  padding: 16px;
+}
+
+/* ---------------- LIGHT MODE SUPPORT ---------------- */
+
+body.light .row {
+  background: rgba(0,0,0,0.03);
+}
+
+body.light .row:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+body.light button.secondary {
+  background: rgba(0,0,0,0.05);
+  color: #333;
+}
+
+body.light button.primary {
+  background: rgba(106,92,255,0.15);
+  color: #4b3fff;
+}
+

@@ -15,6 +15,7 @@ export class Signup {
   email: string = '';
   password: string = ''
   confirmPassword: string = '';
+  company: string = '';
 
   constructor(
     private auth: Auth,
@@ -22,20 +23,28 @@ export class Signup {
   ) {}
 
   signup() {
-    this.auth.signup({
-      email: this.email,
-      password: this.password,
-    }).subscribe({
-      next: (res) => {
-        console.log('Signup success', res);
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        console.error('Signup failed', err);
-        if (err.status === 400) {
-          alert('Not Valid');
-        }
-      }
-    });
+
+  if (this.password !== this.confirmPassword) {
+    alert('Passwords do not match');
+    return;
   }
+
+  this.auth.signup({
+    email: this.email,
+    password: this.password,
+    companyName: this.company
+  }).subscribe({
+    next: () => {
+      console.log('Signup success');
+      this.router.navigate(['/login']);
+    },
+    error: (err) => {
+      console.error('Signup failed', err);
+      if (err.status === 400) {
+        alert('Invalid signup data');
+      }
+    }
+  });
+}
+
 }

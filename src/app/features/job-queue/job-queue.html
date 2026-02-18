@@ -1,0 +1,73 @@
+<section class="jobs-page">
+
+  <!-- HEADER -->
+  <div class="toolbar">
+    <h2>Job Queue</h2>
+
+    <div class="filters">
+      <button class="secondary" (click)="setStatus(null)">All</button>
+      <button class="secondary" (click)="setStatus('Pending')">Pending</button>
+      <button class="secondary" (click)="setStatus('Processing')">Processing</button>
+      <button class="secondary" (click)="setStatus('Failed')">Failed</button>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table">
+
+    <div class="row header">
+      <div>ID</div>
+      <div>Type</div>
+      <div>Status</div>
+      <div>Retries</div>
+      <div>Created</div>
+      <div>Actions</div>
+    </div>
+
+    @for (job of jobs(); track job.Id) {
+      <div class="row">
+
+        <div class="mono">{{ job.Id.slice(0,8) }}...</div>
+
+        <div>{{ job.JobType }}</div>
+
+        <div>
+          <span class="status-badge"
+            [class.pending]="job.Status === 'Pending'"
+            [class.processing]="job.Status === 'Processing'"
+            [class.failed]="job.Status === 'Failed'">
+            {{ job.Status }}
+          </span>
+        </div>
+
+        <div>{{ job.RetryCount }}</div>
+
+        <div>{{ job.CreatedAt | date:'short' }}</div>
+
+        <div class="actions">
+          <button class="primary" (click)="viewJob(job.Id)">
+            View
+          </button>
+        </div>
+
+      </div>
+    } @empty {
+      <p class="empty">No jobs found</p>
+    }
+
+  </div>
+
+  <div class="pagination">
+    <button class="secondary" (click)="prevPage()">Prev</button>
+    <span>Page {{ page() }} / {{ totalPages() }}</span>
+    <button class="secondary" (click)="nextPage()">Next</button>
+  </div>
+
+  @if (selectedJob()) {
+    <div class="job-details">
+      <h3>Job Details</h3>
+      <pre>{{ selectedJob() | json }}</pre>
+    </div>
+  }
+
+</section>
