@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 type UploadStatus = 'pending' | 'uploading' | 'done';
 
@@ -76,7 +77,7 @@ export class Upload {
     formData.append('file', item.file);
 
     this.http.post(
-      'https://localhost:55842/api/VendorInvoices/upload',
+      `${environment.apiUrl}/VendorInvoices/upload`,
       formData,
       {
         reportProgress: true,

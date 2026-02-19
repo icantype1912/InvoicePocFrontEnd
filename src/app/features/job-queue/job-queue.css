@@ -1,74 +1,8 @@
 .jobs-page {
-  max-width: 1100px;
-  margin: 30px auto;
+  max-width: 1450px;
+  margin: 48px auto;
   padding: 0 20px;
 }
-
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.filters button {
-  margin-left: 8px;
-}
-
-.table {
-  margin-top: 20px;
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr;
-  padding: 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-.row.header {
-  opacity: 0.6;
-  font-weight: 600;
-}
-
-.row:hover {
-  background: rgba(255,255,255,0.04);
-}
-
-.status {
-  color: #7fd1ff;
-}
-
-.mono {
-  font-family: monospace;
-}
-
-.pagination {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.job-details {
-  margin-top: 30px;
-  padding: 16px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-}
-
-.empty {
-  opacity: 0.5;
-}
-
-.jobs-page {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-/* ---------------- HEADER ---------------- */
 
 .toolbar {
   display: flex;
@@ -78,7 +12,8 @@
 
 .toolbar h2 {
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
+  font-size: 20px;
 }
 
 .filters {
@@ -86,87 +21,113 @@
   gap: 8px;
 }
 
-/* ---------------- TABLE ---------------- */
-
 .table {
-  margin-top: 20px;
-  border-radius: 14px;
+  margin-top: 22px;
+  border-radius: 16px;
   overflow: hidden;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 .row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr;
-  padding: 14px 18px;
+  grid-template-columns: 2fr 1.2fr 0.8fr 1.4fr 1.2fr;
+  justify-items: center;
+  padding: 16px 18px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.02);
-  transition: all 0.2s ease;
+  transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
 }
 
-.row:hover {
-  background: rgba(255,255,255,0.05);
+.row div:first-child {
+  justify-self: start;
+}
+
+
+.row:last-child {
+  border-bottom: none;
 }
 
 .row.header {
-  opacity: 0.6;
-  font-size: 13px;
+  opacity: 0.55;
+  font-size: 12px;
+  letter-spacing: 0.5px;
   font-weight: 600;
-  background: transparent;
+}
+
+.row:not(.header):hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
 .mono {
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
 }
 
-/* ---------------- STATUS BADGES ---------------- */
-
 .status-badge {
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  border: 1px solid transparent;
 }
 
 .status-badge.pending {
-  background: rgba(255,200,100,0.15);
-  color: #ffc46b;
+  background: rgba(255,190,90,0.14);
+  color: #ffcb7d;
+  border-color: rgba(255,190,90,0.25);
 }
 
 .status-badge.processing {
   background: rgba(120,200,255,0.15);
-  color: #7fd1ff;
+  color: #89d8ff;
+  border-color: rgba(120,200,255,0.28);
+  animation: pulse 1.6s ease-in-out infinite;
 }
 
 .status-badge.failed {
-  background: rgba(255,80,80,0.18);
-  color: #ff8080;
+  background: rgba(255,80,80,0.16);
+  color: #ff8c8c;
+  border-color: rgba(255,80,80,0.35);
 }
 
-/* ---------------- BUTTON SYSTEM ---------------- */
+.status-badge.completed {
+  background: rgba(120,255,160,0.15);
+  color: #8affb0;
+  border-color: rgba(120,255,160,0.3);
+}
+
+.status-badge.invalid {
+  background: rgba(255,120,200,0.15);
+  color: #ff9edc;
+  border-color: rgba(255,120,200,0.3);
+}
+
+
 
 button {
   border: none;
   cursor: pointer;
   padding: 7px 14px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 13px;
   font-weight: 500;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  transition: transform 0.12s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 button.primary {
   background: linear-gradient(
     135deg,
-    rgba(140,120,255,0.25),
-    rgba(140,120,255,0.15)
+    rgba(140,120,255,0.28),
+    rgba(140,120,255,0.12)
   );
-  color: #c9c2ff;
-}
-
-button.primary:hover {
-  transform: translateY(-1px);
-  background: rgba(140,120,255,0.35);
+  color: #d5cfff;
 }
 
 button.secondary {
@@ -178,24 +139,19 @@ button.secondary:hover {
   background: rgba(255,255,255,0.12);
 }
 
-/* ---------------- PAGINATION ---------------- */
-
 .pagination {
-  margin-top: 24px;
+  margin-top: 26px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
-/* ---------------- DETAILS PANEL ---------------- */
-
 .job-details {
-  margin-top: 30px;
-  padding: 18px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 34px;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
 }
 
 .job-details pre {
@@ -203,30 +159,14 @@ button.secondary:hover {
   font-size: 13px;
 }
 
-/* ---------------- EMPTY STATE ---------------- */
-
 .empty {
   opacity: 0.5;
-  padding: 16px;
+  padding: 18px;
+  text-align: center;
 }
 
-/* ---------------- LIGHT MODE SUPPORT ---------------- */
-
-body.light .row {
-  background: rgba(0,0,0,0.03);
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(120,200,255,0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(120,200,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(120,200,255,0); }
 }
-
-body.light .row:hover {
-  background: rgba(0,0,0,0.05);
-}
-
-body.light button.secondary {
-  background: rgba(0,0,0,0.05);
-  color: #333;
-}
-
-body.light button.primary {
-  background: rgba(106,92,255,0.15);
-  color: #4b3fff;
-}
-

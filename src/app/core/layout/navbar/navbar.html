@@ -11,6 +11,10 @@
     @if (auth.isLoggedIn() && auth.isAdmin()) {
       <a routerLink="/admin">Admin</a>
     }
+
+     @if (auth.isLoggedIn() && auth.isAdmin()) {
+      <a routerLink="/jobs">Job Queue</a>
+    }
     
     @if (auth.isLoggedIn()) {
       <a routerLink="/dashboard">Dashboard</a>

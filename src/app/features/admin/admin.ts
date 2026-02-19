@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Auth } from '../../core/services/auth';
+import { environment } from '../../../environments/environment';
 
 type User = {
   id: string;
@@ -19,7 +20,7 @@ export class Admin {
 
   constructor(private http: HttpClient, public auth: Auth) {}
 
-  private api = 'https://localhost:55842/api/admin';
+  private api = `${environment.apiUrl}/admin`;
 
   pendingUsers = signal<User[]>([]);
   users = signal<User[]>([]);

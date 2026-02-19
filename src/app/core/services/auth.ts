@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../../environments/environment';
 
 interface LoginRequest {
   email: string;
@@ -20,7 +21,7 @@ interface SignupRequest {
 })
 export class Auth {
 
-  private api = 'https://localhost:55842/api/auth';
+  private api = `${environment.apiUrl}/auth`;
   private decoded: any | null = null;
 
   constructor(

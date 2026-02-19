@@ -48,6 +48,7 @@ export const routes: Routes = [
   },
   {
     path: 'jobs',
+    canActivate: [adminGuard],
     loadComponent: () =>
       import('./features/job-queue/job-queue').then(m => m.JobQueue)
   },

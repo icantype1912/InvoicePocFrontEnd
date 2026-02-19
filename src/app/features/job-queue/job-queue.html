@@ -1,53 +1,61 @@
 <section class="jobs-page">
 
-  <!-- HEADER -->
   <div class="toolbar">
     <h2>Job Queue</h2>
 
     <div class="filters">
       <button class="secondary" (click)="setStatus(null)">All</button>
-      <button class="secondary" (click)="setStatus('Pending')">Pending</button>
-      <button class="secondary" (click)="setStatus('Processing')">Processing</button>
-      <button class="secondary" (click)="setStatus('Failed')">Failed</button>
+      <button class="secondary" (click)="setStatus(JobStatus.COMPLETED)">Completed</button>
+      <button class="secondary" (click)="setStatus(JobStatus.INVALID)">Invalid</button>
+      <button class="secondary" (click)="setStatus(JobStatus.PROCESSING)">Processing</button>
+      <button class="secondary" (click)="setStatus(JobStatus.PENDING)">Pending</button>
+      <button class="secondary" (click)="setStatus(JobStatus.FAILED)">Failed</button>
     </div>
   </div>
 
-  <!-- TABLE -->
   <div class="table">
 
     <div class="row header">
       <div>ID</div>
-      <div>Type</div>
       <div>Status</div>
       <div>Retries</div>
       <div>Created</div>
       <div>Actions</div>
     </div>
 
-    @for (job of jobs(); track job.Id) {
+    @for (job of jobs(); track job.id) {
       <div class="row">
 
-        <div class="mono">{{ job.Id.slice(0,8) }}...</div>
+        <div class="mono">
+          {{ job.id}}...
+        </div>
 
-        <div>{{ job.JobType }}</div>
 
         <div>
           <span class="status-badge"
-            [class.pending]="job.Status === 'Pending'"
-            [class.processing]="job.Status === 'Processing'"
-            [class.failed]="job.Status === 'Failed'">
-            {{ job.Status }}
+            [class.pending]="job.status === JobStatus.PENDING"
+            [class.processing]="job.status === JobStatus.PROCESSING"
+            [class.failed]="job.status === JobStatus.FAILED"
+            [class.completed]="job.status === JobStatus.COMPLETED"
+            [class.invalid]="job.status === JobStatus.INVALID">
+            {{ job.status }}
           </span>
         </div>
 
-        <div>{{ job.RetryCount }}</div>
+        <div>{{ job.retryCount }}</div>
 
-        <div>{{ job.CreatedAt | date:'short' }}</div>
+        <div>{{ job.createdAt | date:'short' }}</div>
 
         <div class="actions">
-          <button class="primary" (click)="viewJob(job.Id)">
+          <button class="primary" (click)="viewJob(job.id)">
             View
           </button>
+
+          @if (job.status === JobStatus.INVALID) {
+            <button class="secondary" (click)="requeueJob(job.id)">
+              Requeue
+            </button>
+          }
         </div>
 
       </div>
