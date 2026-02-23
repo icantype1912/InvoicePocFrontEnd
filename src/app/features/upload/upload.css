@@ -10,7 +10,7 @@
   font-weight: 800;
   margin-bottom: 8px;
 
-  background: var(--gradient-primary);
+  background: var(--text-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -38,7 +38,7 @@
 
 .upload-card:hover {
   border-color: var(--glow-purple);
-  box-shadow: 0 0 16px rgba(170, 0, 255, 0.25);
+  box-shadow: 0 0 4px rgba(170, 0, 255, 0.25);
 }
 
 .upload-card.drag-over {
@@ -101,8 +101,7 @@
 }
 
 .browse-btn:hover{
-    color: var(--glow-purple);
-    box-shadow: 0 0 32px rgba(170, 0, 255, 0.25);
+    box-shadow: 0 0 8px rgba(170, 0, 255, 0.25);
     border-color: var(--glow-purple);
 }
 

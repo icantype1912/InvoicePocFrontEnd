@@ -87,6 +87,7 @@ export class JobQueue implements OnInit {
           this.loadJobs();
           if (this.selectedJob()?.id === id) {
             this.viewJob(id);
+            this.loadJobs();
           }
         },
         error: (err) => console.error('Failed to requeue job', err)

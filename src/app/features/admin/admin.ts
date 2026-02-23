@@ -38,7 +38,6 @@ export class Admin {
     return this.auth.getUserId() === id;
   }
 
-  // ---------------- API ----------------
 
   loadPending() {
     this.http.get<User[]>(`${this.api}/users/pending`)

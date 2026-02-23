@@ -1,17 +1,26 @@
 <section class="jobs-page">
 
   <div class="toolbar">
+
+  <div class="title-group">
     <h2>Job Queue</h2>
 
-    <div class="filters">
-      <button class="secondary" (click)="setStatus(null)">All</button>
-      <button class="secondary" (click)="setStatus(JobStatus.COMPLETED)">Completed</button>
-      <button class="secondary" (click)="setStatus(JobStatus.INVALID)">Invalid</button>
-      <button class="secondary" (click)="setStatus(JobStatus.PROCESSING)">Processing</button>
-      <button class="secondary" (click)="setStatus(JobStatus.PENDING)">Pending</button>
-      <button class="secondary" (click)="setStatus(JobStatus.FAILED)">Failed</button>
-    </div>
+    <button class="icon-btn" (click)="loadJobs()" title="Refresh">↻
+      </button>
+
   </div>
+
+  <div class="filters">
+    <button class="secondary" (click)="setStatus(null)">All</button>
+    <button class="secondary" (click)="setStatus(JobStatus.COMPLETED)">Completed</button>
+    <button class="secondary" (click)="setStatus(JobStatus.INVALID)">Invalid</button>
+    <button class="secondary" (click)="setStatus(JobStatus.PROCESSING)">Processing</button>
+    <button class="secondary" (click)="setStatus(JobStatus.PENDING)">Pending</button>
+    <button class="secondary" (click)="setStatus(JobStatus.FAILED)">Failed</button>
+  </div>
+
+</div>
+
 
   <div class="table">
 

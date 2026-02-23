@@ -1,7 +1,10 @@
 <nav class="navbar">
 
   <div class="left">
-    <span class="logo" routerLink="/">Aveva</span>
+  <span class="logo" routerLink="/">
+    
+    <img [src]="logoSrc()" alt="Aveva Logo" />
+  </span>
 
     @if (auth.isLoggedIn() && auth.isUser()) {
       <a routerLink="/upload">Upload</a>

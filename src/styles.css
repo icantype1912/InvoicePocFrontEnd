@@ -5,9 +5,9 @@
 
 /* Global overrides for all slide toggles */
 :root {
-  --bg: #f8fafc;
-  --bg-elevated: rgba(0, 0, 0, 0.05);
-  --text-primary: #0f172a;
+  --bg: #f6f8fa;
+  --bg-elevated: #ffffff;
+  --text-primary: #363d42;
   --text-muted: #475569;
 
   --gradient-primary: linear-gradient(
@@ -16,6 +16,9 @@
     #9333ea,
     #a855f7
   );
+
+  --avevapurple:#3d1152;
+  --purple:#6b04a8;
 
   --glow-cyan: #06b6d4;
   --glow-purple: #6366f1;
@@ -28,8 +31,8 @@
 
 /* DARK MODE */
 [data-theme="dark"] {
-  --bg: #0b0f1a;
-  --bg-elevated: rgba(255, 255, 255, 0.06);
+  --bg: #23282b;
+  --bg-elevated: rgba(0, 0, 0, 0.267);
   --text-primary: #e5e7eb;
   --text-muted: #9ca3af;
 

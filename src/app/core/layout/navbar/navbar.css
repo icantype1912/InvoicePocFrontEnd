@@ -18,15 +18,20 @@
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 18px;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 48px;
 }
 
-.logo:hover{
-  cursor:pointer;
+.logo img {
+  height: 34px;
+  width: auto;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
 }
 
 a {

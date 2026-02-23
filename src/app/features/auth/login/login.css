@@ -24,20 +24,14 @@
   font-weight: 700;
   margin-bottom: 30px;
   line-height: 1.25;
-
-  background: linear-gradient(
-    90deg,
-    var(--glow-purple),
-    var(--glow-cyan)
-  );
+  background: var(--text-primary);
+  
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   letter-spacing: 0.2px;
 
-  /* subtle depth */
-  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.25));
 }
 
 
@@ -80,8 +74,8 @@ input:focus {
   border: none;
   cursor: pointer;
 
-  background: var(--gradient-primary);
-  color: #000;
+  background: var(--purple);
+  color: #ffffff;
   font-weight: 600;
 
   margin-top: 8px;
@@ -94,6 +88,6 @@ input:focus {
 }
 
 .switch a {
-  color: var(--glow-purple);
+  color: var(--purple);
   text-decoration: none;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,computed } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Theme } from '../../services/theme';
 import { Auth } from '../../services/auth';
@@ -13,6 +13,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class Navbar {
 
+  logoSrc = computed(() =>
+  this.theme.isDark()     
+    ? '/logo.svg'
+    : '/logolight.svg'
+);
+
   constructor(
     public theme: Theme,
     public auth: Auth,
@@ -22,7 +28,8 @@ export class Navbar {
   toggleTheme() {
     this.theme.toggle();
   }
-
+  
+  
   logout() {
     this.auth.clearToken();
     this.router.navigate(['/login']);
